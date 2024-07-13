@@ -1,4 +1,4 @@
-## for minecraft 1.20.1 rn but will be 1.20.2 soooon
+## for minecraft 1.20.2
 
 adds keybind to open blocks shop in spawn
 adds useful qol options
