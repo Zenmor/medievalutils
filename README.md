@@ -10,7 +10,7 @@ u must have mod menu and cloth config to configure it
 
 - [x] stfu announcents -enchantedbluejay
 
-- [ ] bos timmers
+- [ ] ~~bos timmers~~ i dunno how to do
 - [ ] recreate dungeon timer but better from zentimer
 
 ### if you have suggestions dm me
