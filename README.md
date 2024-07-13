@@ -12,9 +12,9 @@ u must have mod menu and cloth config to configure it
 
 - [ ] ~~bos timmers~~ i dunno how to do
 
-- [ ] auto event leave
+- [x] auto event leave
 
-- [ ] stfu votes
+- [x] stfu votes
 
 - [ ] recreate dungeon timer but better from zentimer
 
