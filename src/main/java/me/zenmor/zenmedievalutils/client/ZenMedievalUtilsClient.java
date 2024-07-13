@@ -10,6 +10,7 @@ import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.screen.GenericContainerScreenHandler;
 import net.minecraft.text.Text;
+import net.minecraft.text.TextColor;
 import org.lwjgl.glfw.GLFW;
 
 import java.util.Arrays;
@@ -30,7 +31,7 @@ public class ZenMedievalUtilsClient implements ClientModInitializer {
         keyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 "key.zenmedievalutils.test",
                 InputUtil.Type.KEYSYM,
-                GLFW.GLFW_KEY_R,
+                GLFW.GLFW_KEY_UNKNOWN,
                 "category.zenmedievalutils.test"
         ));
     }
@@ -47,7 +48,7 @@ public class ZenMedievalUtilsClient implements ClientModInitializer {
 
         if (client.player != null && client.player.currentScreenHandler != null && MedievalUtilsConfig.getInstance().isaUtoClose()) {
             String currentWorld = client.player.getEntityWorld().getRegistryKey().getValue().toString();
-            List<String> targetWorlds = Arrays.asList("minecraft:sunken_0", "minecraft:sunken_1", "minecraft:sunken_2", "minecraft:sunken_3", "minecraft:sunken_4", "minecraft:sunken_5", "minecraft:sunken_6", "minecraft:sunken_7", "minecraft:sunken_8", "minecraft:sunken_9", "minecraft:sunken_10", "minecraft:sunken_11", "minecraft:sunken_12", "minecraft:sunken_13", "minecraft:sunken_14", "minecraft:sunken_15", "minecraft:sunken_16", "minecraft:sunken_17", "minecraft:sunken_18", "minecraft:sunken_19", "minecraft:sunken_20", "minecraft:sunken_21", "minecraft:sunken_22", "minecraft:sunken_23", "minecraft:sunken_24", "minecraft:sunken_25");
+            List<String> targetWorlds = Arrays.asList("minecraft:the_end", "minecraft:sunken_0", "minecraft:sunken_1", "minecraft:sunken_2", "minecraft:sunken_3", "minecraft:sunken_4", "minecraft:sunken_5", "minecraft:sunken_6", "minecraft:sunken_7", "minecraft:sunken_8", "minecraft:sunken_9", "minecraft:sunken_10", "minecraft:sunken_11", "minecraft:sunken_12", "minecraft:sunken_13", "minecraft:sunken_14", "minecraft:sunken_15", "minecraft:sunken_16", "minecraft:sunken_17", "minecraft:sunken_18", "minecraft:sunken_19", "minecraft:sunken_20", "minecraft:sunken_21", "minecraft:sunken_22", "minecraft:sunken_23", "minecraft:sunken_24", "minecraft:sunken_25");
 
             if (targetWorlds.contains(currentWorld)) {
                 if (client.player.currentScreenHandler instanceof GenericContainerScreenHandler) {
@@ -56,6 +57,12 @@ public class ZenMedievalUtilsClient implements ClientModInitializer {
 
                     if (chestHandler.getRows() == 6 && currenttitle != null && currenttitle.getString().equals(" ") || chestHandler.getRows() == 6 && currenttitle != null && currenttitle.getString().equals("")) {
                         client.player.closeScreen();
+                        client.player.sendMessage(Text.literal("rewards gui auto closed").styled(style -> style.withColor(TextColor.fromRgb(0xA4BEF3))), true);
+                    }
+
+                    if (chestHandler.getRows() == 3 && currenttitle != null && currenttitle.getString().equals("Chest")) {
+                        client.player.closeScreen();
+                        client.player.sendMessage(Text.literal("u opened one of the fake chests").styled(style -> style.withColor(TextColor.fromRgb(0xA4BEF3))), true);
                     }
                 }
             }

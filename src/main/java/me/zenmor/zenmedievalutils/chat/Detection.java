@@ -19,15 +19,25 @@ public class Detection implements ClientReceiveMessageEvents.AllowGame {
             MinecraftClient.getInstance().player.networkHandler.sendChatMessage("welcome");
             return true;
 
-        } else if (MedievalUtilsConfig.getInstance().isstfurewardsenabled() && (Pattern.compile(Pattern.quote("Dungeons » These items will be added to your rewards inventory! You'll get them when you finish the dungeon."), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find())) {
+        } else if (MedievalUtilsConfig.getInstance().isstfurewardsenabled() && (Pattern.compile(Pattern.quote("Dungeons » These items will be added to your rewards inventory! You'll get them when you finish the dungeon."), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find())
+                || MedievalUtilsConfig.getInstance().isstfurewardsenabled() && (Pattern.compile(Pattern.quote("Dungeons » The rewards you didn't take were added to your rewards inventory."), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find())
+                || MedievalUtilsConfig.getInstance().isstfurewardsenabled() && (Pattern.compile(Pattern.quote("Dungeons » View your rewards with /rewards"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find())) {
             LogUtils.getLogger().info("blocked rewards messages");
             return false;
-        } else if (MedievalUtilsConfig.getInstance().isstfurewardsenabled() && (Pattern.compile(Pattern.quote("Dungeons » View your rewards with /rewards"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find())) {
-            LogUtils.getLogger().info("blocked rewards messages");
+        } else if
+        (MedievalUtilsConfig.getInstance().isstfutipsenabled() && (Pattern.compile(Pattern.quote("+--------------------------------------------------+"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find())
+                        || MedievalUtilsConfig.getInstance().isstfutipsenabled() && (Pattern.compile(Pattern.quote("MedievalMC: Confused on how to get started? Check out /help for a guide through most of our features!"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find())
+                        || MedievalUtilsConfig.getInstance().isstfutipsenabled() && (Pattern.compile(Pattern.quote("MedievalMC: Want to obtain some amazing items? /warp darkzone but be aware of the challenge that awaits!"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find())
+                        || MedievalUtilsConfig.getInstance().isstfutipsenabled() && (Pattern.compile(Pattern.quote("MedievalMC: Make sure you remember to claim your /daily each time you login!"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find())
+                        || MedievalUtilsConfig.getInstance().isstfutipsenabled() && (Pattern.compile(Pattern.quote("MedievalMC: Looking for massive upgrades and unique items? Then look no further than /blackmarket!"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find())
+                        || MedievalUtilsConfig.getInstance().isstfutipsenabled() && (Pattern.compile(Pattern.quote("MedievalMC: Think you are ready to battle the elements? Well if so check out /bosses and test yourself!"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find())) {
+            //i swear they made these tips with chatgpt lmao
+            LogUtils.getLogger().info("blocked tip messages");
             return false;
-        } else if (MedievalUtilsConfig.getInstance().isstfurewardsenabled() && (Pattern.compile(Pattern.quote("Dungeons » The rewards you didn't take were added to your rewards inventory."), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find())) {
-            LogUtils.getLogger().info("blocked rewards messages");
-            return false;
+        } else if (MedievalUtilsConfig.getInstance().isautoreadyenabled() && (Pattern.compile(Pattern.quote("Dungeons » Dungeon 'sunken' is now available"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find())) {
+            MinecraftClient.getInstance().player.networkHandler.sendChatCommand("ready");
+            LogUtils.getLogger().info("auto dungeon readyied");
+            return true;
         } else {
             return true;
         }

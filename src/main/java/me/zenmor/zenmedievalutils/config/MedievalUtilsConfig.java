@@ -17,10 +17,14 @@ public final class MedievalUtilsConfig {
     static final boolean defaultAUtoClose = false;
     static final boolean defaultWelcome = false;
     static final boolean defaultSTFUrewards = false;
+    static final boolean defaultSTFUtips = false;
+    static final boolean defaultautoready = false;
 
     boolean aUtoClose = defaultAUtoClose;
     boolean welcome = defaultWelcome;
     boolean stfurewards = defaultSTFUrewards;
+    boolean stfutips = defaultSTFUtips;
+    boolean autoready = defaultautoready;
 
     private MedievalUtilsConfig() {
     }
@@ -59,5 +63,13 @@ public final class MedievalUtilsConfig {
 
     public boolean isstfurewardsenabled() {
         return stfurewards;
+    }
+
+    public boolean isstfutipsenabled() {
+        return stfutips;
+    }
+
+    public boolean isautoreadyenabled() {
+        return autoready;
     }
 }

@@ -38,6 +38,20 @@ public class ModMenuIntegration implements ModMenuApi {
                         .setSaveConsumer(stfurewards -> MedievalUtilsConfig.getInstance().stfurewards = stfurewards)
                         .build())
                 .addEntry(entryBuilder.startBooleanToggle(
+                                Text.translatable("text.medievalutils.config.option.stfutips"),
+                                MedievalUtilsConfig.getInstance().stfutips)
+                        .setDefaultValue(MedievalUtilsConfig.defaultSTFUtips)
+                        .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.stfutips"))
+                        .setSaveConsumer(stfutips -> MedievalUtilsConfig.getInstance().stfutips = stfutips)
+                        .build())
+                .addEntry(entryBuilder.startBooleanToggle(
+                                Text.translatable("text.medievalutils.config.option.autoready"),
+                                MedievalUtilsConfig.getInstance().autoready)
+                        .setDefaultValue(MedievalUtilsConfig.defaultautoready)
+                        .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.autoready"))
+                        .setSaveConsumer(autoready -> MedievalUtilsConfig.getInstance().autoready = autoready)
+                        .build())
+                .addEntry(entryBuilder.startBooleanToggle(
                                 Text.translatable("text.medievalutils.config.option.autowelcome"),
                                 MedievalUtilsConfig.getInstance().welcome)
                         .setDefaultValue(MedievalUtilsConfig.defaultWelcome)

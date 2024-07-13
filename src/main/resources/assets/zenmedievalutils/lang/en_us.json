@@ -1,9 +1,14 @@
 {
   "key.zenmedievalutils.test": "ShopGUI Blocks",
   "text.medievalutils.config.title": "medievial utils",
-  "text.medievalutils.config.option.stfurewards": "stfu reward messages",
+  "text.medievalutils.config.option.autoready": "auto dungeon ready",
+  "text.medievalutils.config.tooltip.option.autoready": "automatically run /ready when ready message shows up",
+  "text.medievalutils.config.option.stfutips": "stfu medieval tips",
+  "text.medievalutils.config.tooltip.option.stfutips": "shuts up tip messages from medieval",
+  "text.medievalutils.config.option.stfurewards": "stfu dungeon rewards",
+  "text.medievalutils.config.tooltip.option.stfurewards": "shuts up reward messages in dungeons",
   "text.medievalutils.config.option.autowelcome": "auto welcome",
   "text.medievalutils.config.tooltip.option.autowelcome": "§c§lUSE AT OWN RISK§r §7-§r §ridk if this is allowed since its free rewards",
-  "text.medievalutils.config.option.autoclose": "lootchest autcosel",
+  "text.medievalutils.config.option.autoclose": "lootchest autoclose",
   "text.medievalutils.config.tooltip.option.autoclose": "autommaiclly close lootchests in dungeons"
 }
