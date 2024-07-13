@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "zenmedievalutils",
+  "version": "${version}",
+  "name": "ZenMedievalUtils",
+  "description": "some useful stuff for good ol knockoff huabacraft",
+  "authors": [
+    "Zenmor"
+  ],
+  "contact": {
+    "repo": "https://github.com/Zenmor/ZenMedievalUtils"
+  },
+  "license": "MIT",
+  "icon": "assets/zenmedievalutils/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "me.zenmor.zenmedievalutils.client.ZenMedievalUtilsClient"
+    ],
+    "main": [
+      "me.zenmor.zenmedievalutils.ZenMedievalUtils"
+    ],
+    "modmenu": [
+      "me.zenmor.zenmedievalutils.config.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "medievalutils.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  },
+  "suggests": {
+    "modmenu": ">=5"
+  }
+}

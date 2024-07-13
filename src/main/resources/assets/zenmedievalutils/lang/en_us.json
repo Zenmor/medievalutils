@@ -1,0 +1,9 @@
+{
+  "key.zenmedievalutils.test": "ShopGUI Blocks",
+  "text.medievalutils.config.title": "medievial utils",
+  "text.medievalutils.config.option.stfurewards": "stfu reward messages",
+  "text.medievalutils.config.option.autowelcome": "auto welcome",
+  "text.medievalutils.config.tooltip.option.autowelcome": "§c§lUSE AT OWN RISK§r §7-§r §ridk if this is allowed since its free rewards",
+  "text.medievalutils.config.option.autoclose": "lootchest autcosel",
+  "text.medievalutils.config.tooltip.option.autoclose": "autommaiclly close lootchests in dungeons"
+}
