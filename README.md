@@ -11,6 +11,11 @@ u must have mod menu and cloth config to configure it
 - [x] stfu announcents -enchantedbluejay
 
 - [ ] ~~bos timmers~~ i dunno how to do
+
+- [ ] auto event leave
+
+- [ ] stfu votes
+
 - [ ] recreate dungeon timer but better from zentimer
 
 ### if you have suggestions dm me
