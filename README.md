@@ -17,8 +17,8 @@ u must have mod menu and cloth config to configure it
 - [x] stfu votes
 
 - [x] recreate dungeon timer but better from zentimer
-- [ ] make dungeon timer have different spots u can put it in
-- [ ] color picker for it
-- [ ] make a dungeon speedrun website (idk how to make websites, so lowest priority) 
+ - [ ] make dungeon timer have different spots u can put it in
+ - [ ] color picker for dungeon timer
+ - [ ] make a dungeon speedrun website (idk how to make websites, so lowest priority) 
 
 ### if you have suggestions dm me
