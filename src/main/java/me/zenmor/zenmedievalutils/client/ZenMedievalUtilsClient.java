@@ -119,7 +119,6 @@ public class ZenMedievalUtilsClient implements ClientModInitializer {
             MinecraftClient.getInstance().player.sendMessage(Text.literal("dungeon finished in: " + timeString).styled(style -> style.withColor(TextColor.fromRgb(0xA4BEF3))), true);
             MinecraftClient.getInstance().player.sendMessage(Text.literal("dungeon finished in: " + timeString).styled(style -> style.withColor(TextColor.fromRgb(0xA4BEF3))), false);
         }
-
         previousworld = currentWorld;
     }
 }

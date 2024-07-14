@@ -14,6 +14,7 @@ public final class MedievalUtilsConfig {
     private static final Gson GSON = new GsonBuilder().setLenient().setPrettyPrinting().create();
     private static MedievalUtilsConfig instance;
 
+    
     static final boolean defaultAUtoClose = false;
     static final boolean defaultWelcome = false;
     static final boolean defaultSTFUrewards = false;

@@ -24,6 +24,7 @@ public class ModMenuIntegration implements ModMenuApi {
                 .setTitle(Text.translatable("text.medievalutils.config.title"));
         ConfigEntryBuilder entryBuilder = builder.entryBuilder();
 
+
         ConfigCategory qolcategory = builder.getOrCreateCategory(Text.translatable("text.medievalutils.config.category.qol"));
         qolcategory.addEntry(entryBuilder.startTextDescription(Text.translatable("text.medievalutils.config.bugreports.qol"))
                 .build());
