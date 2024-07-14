@@ -27,8 +27,6 @@ public class ZenMedievalUtils implements ModInitializer {
     @Override
     public void onInitialize() {
         ClientReceiveMessageEvents.ALLOW_GAME.register(new Detection());
-        LOGGER.info("Hello Fabric world!");
-
         Registry.register(Registries.SOUND_EVENT, ZenMedievalUtils.DREAMSPEEDRUN_ID, DREAMSPEEDRUN_EVENT);
 
         boolean iszentimerloaded = iszentimerloaded();
