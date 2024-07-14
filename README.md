@@ -14,6 +14,8 @@ u must have mod menu and cloth config to configure it
 
 - [x] auto event leave
 
+- [x] stfu ryan
+
 - [x] stfu votes
 
 - [x] recreate dungeon timer but better from zentimer
