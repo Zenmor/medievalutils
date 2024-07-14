@@ -20,6 +20,8 @@ u must have mod menu and cloth config to configure it
 
 - [x] stfu votes
 
+- [ ] stfu fish
+
 - [x] recreate dungeon timer but better from zentimer
  - [ ] make dungeon timer have different spots u can put it in
  - [ ] color picker for dungeon timer
