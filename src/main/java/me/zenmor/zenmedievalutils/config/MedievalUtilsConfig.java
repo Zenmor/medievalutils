@@ -22,6 +22,7 @@ public final class MedievalUtilsConfig {
     static final boolean defaultautoleave = false;
     static final boolean defaultSTFUvotes = false;
     static final boolean defaultdungeontimer = true;
+    static final boolean defaultSTFUryan = false;
 
     boolean aUtoClose = defaultAUtoClose;
     boolean welcome = defaultWelcome;
@@ -31,6 +32,7 @@ public final class MedievalUtilsConfig {
     boolean autoleave = defaultautoleave;
     boolean stfuvotes = defaultSTFUvotes;
     boolean dungeontimer = defaultdungeontimer;
+    boolean stfuryan = defaultSTFUryan;
 
     private MedievalUtilsConfig() {
     }
@@ -89,5 +91,9 @@ public final class MedievalUtilsConfig {
 
     public boolean isdungeontimersenabled() {
         return dungeontimer;
+    }
+
+    public boolean isstfuryanenabled() {
+        return stfuryan;
     }
 }

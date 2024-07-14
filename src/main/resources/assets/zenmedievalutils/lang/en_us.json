@@ -12,6 +12,8 @@
   "text.medievalutils.config.tooltip.option.stfuvotes": "shuts up vote messages from medieval",
   "text.medievalutils.config.option.stfurewards": "stfu dungeon rewards",
   "text.medievalutils.config.tooltip.option.stfurewards": "shuts up reward messages in dungeons",
+  "text.medievalutils.config.option.stfuryan": "stfu ryan",
+  "text.medievalutils.config.tooltip.option.stfuryan": "shuts up ryan",
   "text.medievalutils.config.option.autowelcome": "auto welcome",
   "text.medievalutils.config.tooltip.option.autowelcome": "§c§lUSE AT OWN RISK§r §7-§r §ridk if this is allowed since its free rewards",
   "text.medievalutils.config.option.autoclose": "lootchest autoclose",

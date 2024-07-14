@@ -5,6 +5,7 @@ import me.zenmor.zenmedievalutils.config.MedievalUtilsConfig;
 import net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
+import net.minecraft.text.TextColor;
 
 import java.util.regex.Pattern;
 
@@ -44,6 +45,9 @@ public class Detection implements ClientReceiveMessageEvents.AllowGame {
             return true;
         } else if (MedievalUtilsConfig.getInstance().isstfuvotesenabled() && Pattern.compile(Pattern.quote("MedievalMC » ") + "[^ ]*" + Pattern.quote(" has voted!"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find()) {
             LogUtils.getLogger().info("blocked vote message");
+            return false;
+        } else if (MedievalUtilsConfig.getInstance().isstfuryanenabled() && Pattern.compile(Pattern.quote("Lordrj2 » "), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find()) {
+            MinecraftClient.getInstance().player.sendMessage(Text.literal("message from ryan removed").styled(style -> style.withColor(TextColor.fromRgb(0xA4BEF3))), false);
             return false;
         } else {
             return true;
