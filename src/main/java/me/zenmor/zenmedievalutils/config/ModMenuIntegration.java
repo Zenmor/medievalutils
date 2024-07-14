@@ -3,6 +3,7 @@ package me.zenmor.zenmedievalutils.config;
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
+import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
@@ -22,70 +23,85 @@ public class ModMenuIntegration implements ModMenuApi {
                 .setParentScreen(parent)
                 .setTitle(Text.translatable("text.medievalutils.config.title"));
         ConfigEntryBuilder entryBuilder = builder.entryBuilder();
-        builder.getOrCreateCategory(Text.empty())
-                .addEntry(entryBuilder.startBooleanToggle(
-                                Text.translatable("text.medievalutils.config.option.autoclose"),
-                                MedievalUtilsConfig.getInstance().aUtoClose)
-                        .setDefaultValue(MedievalUtilsConfig.defaultAUtoClose)
-                        .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.autoclose"))
-                        .setSaveConsumer(autoclose -> MedievalUtilsConfig.getInstance().aUtoClose = autoclose)
-                        .build())
-                .addEntry(entryBuilder.startBooleanToggle(
-                                Text.translatable("text.medievalutils.config.option.stfurewards"),
-                                MedievalUtilsConfig.getInstance().stfurewards)
-                        .setDefaultValue(MedievalUtilsConfig.defaultSTFUrewards)
-                        .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.stfurewards"))
-                        .setSaveConsumer(stfurewards -> MedievalUtilsConfig.getInstance().stfurewards = stfurewards)
-                        .build())
-                .addEntry(entryBuilder.startBooleanToggle(
-                                Text.translatable("text.medievalutils.config.option.stfutips"),
-                                MedievalUtilsConfig.getInstance().stfutips)
-                        .setDefaultValue(MedievalUtilsConfig.defaultSTFUtips)
-                        .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.stfutips"))
-                        .setSaveConsumer(stfutips -> MedievalUtilsConfig.getInstance().stfutips = stfutips)
-                        .build())
-                .addEntry(entryBuilder.startBooleanToggle(
-                                Text.translatable("text.medievalutils.config.option.stfuvotes"),
-                                MedievalUtilsConfig.getInstance().stfuvotes)
-                        .setDefaultValue(MedievalUtilsConfig.defaultSTFUvotes)
-                        .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.stfuvotes"))
-                        .setSaveConsumer(stfuvotes -> MedievalUtilsConfig.getInstance().stfuvotes = stfuvotes)
-                        .build())
-                .addEntry(entryBuilder.startBooleanToggle(
-                                Text.translatable("text.medievalutils.config.option.stfuryan"),
-                                MedievalUtilsConfig.getInstance().stfuryan)
-                        .setDefaultValue(MedievalUtilsConfig.defaultSTFUryan)
-                        .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.stfuryan"))
-                        .setSaveConsumer(stfuryan -> MedievalUtilsConfig.getInstance().stfuryan = stfuryan)
-                        .build())
-                .addEntry(entryBuilder.startBooleanToggle(
-                                Text.translatable("text.medievalutils.config.option.autoready"),
-                                MedievalUtilsConfig.getInstance().autoready)
-                        .setDefaultValue(MedievalUtilsConfig.defaultautoready)
-                        .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.autoready"))
-                        .setSaveConsumer(autoready -> MedievalUtilsConfig.getInstance().autoready = autoready)
-                        .build())
-                .addEntry(entryBuilder.startBooleanToggle(
-                                Text.translatable("text.medievalutils.config.option.autoleave"),
-                                MedievalUtilsConfig.getInstance().autoleave)
-                        .setDefaultValue(MedievalUtilsConfig.defaultautoleave)
-                        .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.autoleave"))
-                        .setSaveConsumer(autoleave -> MedievalUtilsConfig.getInstance().autoleave = autoleave)
-                        .build())
-                .addEntry(entryBuilder.startBooleanToggle(
-                                Text.translatable("text.medievalutils.config.option.dungeontimer"),
-                                MedievalUtilsConfig.getInstance().dungeontimer)
-                        .setDefaultValue(MedievalUtilsConfig.defaultdungeontimer)
-                        .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.dungeontimer"))
-                        .setSaveConsumer(dungeontimer -> MedievalUtilsConfig.getInstance().dungeontimer = dungeontimer)
-                        .build())
-                .addEntry(entryBuilder.startBooleanToggle(
-                                Text.translatable("text.medievalutils.config.option.autowelcome"),
-                                MedievalUtilsConfig.getInstance().welcome)
-                        .setDefaultValue(MedievalUtilsConfig.defaultWelcome)
-                        .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.autowelcome"))
-                        .setSaveConsumer(welcome -> MedievalUtilsConfig.getInstance().welcome = welcome)
-                        .build());
+
+        ConfigCategory qolcategory = builder.getOrCreateCategory(Text.translatable("text.medievalutils.config.category.qol"));
+        qolcategory.addEntry(entryBuilder.startTextDescription(Text.translatable("text.medievalutils.config.bugreports.qol"))
+                .build());
+        qolcategory.addEntry(entryBuilder.startBooleanToggle(
+                        Text.translatable("text.medievalutils.config.option.autoleave"),
+                        MedievalUtilsConfig.getInstance().autoleave)
+                .setDefaultValue(MedievalUtilsConfig.defaultautoleave)
+                .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.autoleave"))
+                .setSaveConsumer(autoleave -> MedievalUtilsConfig.getInstance().autoleave = autoleave)
+                .build());
+        qolcategory.addEntry(entryBuilder.startBooleanToggle(
+                        Text.translatable("text.medievalutils.config.option.autowelcome"),
+                        MedievalUtilsConfig.getInstance().welcome)
+                .setDefaultValue(MedievalUtilsConfig.defaultWelcome)
+                .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.autowelcome"))
+                .setSaveConsumer(welcome -> MedievalUtilsConfig.getInstance().welcome = welcome)
+                .build());
+
+        ConfigCategory stfucategory = builder.getOrCreateCategory(Text.translatable("text.medievalutils.config.category.stfu"));
+        stfucategory.addEntry(entryBuilder.startBooleanToggle(
+                        Text.translatable("text.medievalutils.config.option.stfurewards"),
+                        MedievalUtilsConfig.getInstance().stfurewards)
+                .setDefaultValue(MedievalUtilsConfig.defaultSTFUrewards)
+                .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.stfurewards"))
+                .setSaveConsumer(stfurewards -> MedievalUtilsConfig.getInstance().stfurewards = stfurewards)
+                .build());
+        stfucategory.addEntry(entryBuilder.startBooleanToggle(
+                        Text.translatable("text.medievalutils.config.option.stfutips"),
+                        MedievalUtilsConfig.getInstance().stfutips)
+                .setDefaultValue(MedievalUtilsConfig.defaultSTFUtips)
+                .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.stfutips"))
+                .setSaveConsumer(stfutips -> MedievalUtilsConfig.getInstance().stfutips = stfutips)
+                .build());
+        stfucategory.addEntry(entryBuilder.startBooleanToggle(
+                        Text.translatable("text.medievalutils.config.option.stfuvotes"),
+                        MedievalUtilsConfig.getInstance().stfuvotes)
+                .setDefaultValue(MedievalUtilsConfig.defaultSTFUvotes)
+                .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.stfuvotes"))
+                .setSaveConsumer(stfuvotes -> MedievalUtilsConfig.getInstance().stfuvotes = stfuvotes)
+                .build());
+        stfucategory.addEntry(entryBuilder.startBooleanToggle(
+                        Text.translatable("text.medievalutils.config.option.stfuryan"),
+                        MedievalUtilsConfig.getInstance().stfuryan)
+                .setDefaultValue(MedievalUtilsConfig.defaultSTFUryan)
+                .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.stfuryan"))
+                .setSaveConsumer(stfuryan -> MedievalUtilsConfig.getInstance().stfuryan = stfuryan)
+                .build());
+
+        ConfigCategory dungeoncategory = builder.getOrCreateCategory(Text.translatable("text.medievalutils.config.category.dungeons"));
+        dungeoncategory.addEntry(entryBuilder.startBooleanToggle(
+                        Text.translatable("text.medievalutils.config.option.dungeontimer"),
+                        MedievalUtilsConfig.getInstance().dungeontimer)
+                .setDefaultValue(MedievalUtilsConfig.defaultdungeontimer)
+                .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.dungeontimer"))
+                .setSaveConsumer(dungeontimer -> MedievalUtilsConfig.getInstance().dungeontimer = dungeontimer)
+                .build());
+        dungeoncategory.addEntry(entryBuilder.startBooleanToggle(
+                        Text.translatable("text.medievalutils.config.option.dungeontimerDREAM"),
+                        MedievalUtilsConfig.getInstance().dungeondream)
+                .setDefaultValue(MedievalUtilsConfig.defaultdungeondream)
+                .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.dungeondream"))
+                .setSaveConsumer(dungeondream -> MedievalUtilsConfig.getInstance().dungeondream = dungeondream)
+                .build());
+        dungeoncategory.addEntry(entryBuilder.startBooleanToggle(
+                        Text.translatable("text.medievalutils.config.option.autoready"),
+                        MedievalUtilsConfig.getInstance().autoready)
+                .setDefaultValue(MedievalUtilsConfig.defaultautoready)
+                .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.autoready"))
+                .setSaveConsumer(autoready -> MedievalUtilsConfig.getInstance().autoready = autoready)
+                .build());
+        dungeoncategory.addEntry(entryBuilder.startBooleanToggle(
+                        Text.translatable("text.medievalutils.config.option.autoclose"),
+                        MedievalUtilsConfig.getInstance().aUtoClose)
+                .setDefaultValue(MedievalUtilsConfig.defaultAUtoClose)
+                .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.autoclose"))
+                .setSaveConsumer(autoclose -> MedievalUtilsConfig.getInstance().aUtoClose = autoclose)
+                .build());
+
         return builder
                 .setSavingRunnable(MedievalUtilsConfig.getInstance()::save)
                 .build();

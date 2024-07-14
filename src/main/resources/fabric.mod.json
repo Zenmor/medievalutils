@@ -34,5 +34,12 @@
   },
   "suggests": {
     "modmenu": ">=5"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.github_releases": "https://github.com/Zenmor/medievalutils"
+      }
+    }
   }
 }
