@@ -45,11 +45,32 @@ public class ModMenuIntegration implements ModMenuApi {
                         .setSaveConsumer(stfutips -> MedievalUtilsConfig.getInstance().stfutips = stfutips)
                         .build())
                 .addEntry(entryBuilder.startBooleanToggle(
+                                Text.translatable("text.medievalutils.config.option.stfuvotes"),
+                                MedievalUtilsConfig.getInstance().stfuvotes)
+                        .setDefaultValue(MedievalUtilsConfig.defaultSTFUvotes)
+                        .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.stfuvotes"))
+                        .setSaveConsumer(stfuvotes -> MedievalUtilsConfig.getInstance().stfuvotes = stfuvotes)
+                        .build())
+                .addEntry(entryBuilder.startBooleanToggle(
                                 Text.translatable("text.medievalutils.config.option.autoready"),
                                 MedievalUtilsConfig.getInstance().autoready)
                         .setDefaultValue(MedievalUtilsConfig.defaultautoready)
                         .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.autoready"))
                         .setSaveConsumer(autoready -> MedievalUtilsConfig.getInstance().autoready = autoready)
+                        .build())
+                .addEntry(entryBuilder.startBooleanToggle(
+                                Text.translatable("text.medievalutils.config.option.autoleave"),
+                                MedievalUtilsConfig.getInstance().autoleave)
+                        .setDefaultValue(MedievalUtilsConfig.defaultautoleave)
+                        .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.autoleave"))
+                        .setSaveConsumer(autoleave -> MedievalUtilsConfig.getInstance().autoleave = autoleave)
+                        .build())
+                .addEntry(entryBuilder.startBooleanToggle(
+                                Text.translatable("text.medievalutils.config.option.dungeontimer"),
+                                MedievalUtilsConfig.getInstance().dungeontimer)
+                        .setDefaultValue(MedievalUtilsConfig.defaultdungeontimer)
+                        .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.dungeontimer"))
+                        .setSaveConsumer(dungeontimer -> MedievalUtilsConfig.getInstance().dungeontimer = dungeontimer)
                         .build())
                 .addEntry(entryBuilder.startBooleanToggle(
                                 Text.translatable("text.medievalutils.config.option.autowelcome"),

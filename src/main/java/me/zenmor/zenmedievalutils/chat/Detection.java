@@ -13,7 +13,7 @@ public class Detection implements ClientReceiveMessageEvents.AllowGame {
     @Override
     public boolean allowReceiveGameMessage(Text message, boolean overlay) {
         if (MedievalUtilsConfig.getInstance().iswelcomeenabled() && Pattern.compile(Pattern.quote("Welcome ") + "[^ ]*" + Pattern.quote(" to the MedievalMC Realm!"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find()) {
-            LogUtils.getLogger().info("detected welcome message");
+            LogUtils.getLogger().info("blocked welcome message");
 
             assert MinecraftClient.getInstance().player != null;
             MinecraftClient.getInstance().player.networkHandler.sendChatMessage("welcome");
@@ -38,6 +38,13 @@ public class Detection implements ClientReceiveMessageEvents.AllowGame {
             MinecraftClient.getInstance().player.networkHandler.sendChatCommand("ready");
             LogUtils.getLogger().info("auto dungeon readyied");
             return true;
+        } else if (MedievalUtilsConfig.getInstance().isautoleaveenabled() && (Pattern.compile(Pattern.quote("Events » You are now a spectator. Use /event leave to leave spectator mode"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find())) {
+            MinecraftClient.getInstance().player.networkHandler.sendChatCommand("event leave");
+            LogUtils.getLogger().info("left event auto");
+            return true;
+        } else if (MedievalUtilsConfig.getInstance().isstfuvotesenabled() && Pattern.compile(Pattern.quote("MedievalMC » ") + "[^ ]*" + Pattern.quote(" has voted!"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find()) {
+            LogUtils.getLogger().info("blocked vote message");
+            return false;
         } else {
             return true;
         }
