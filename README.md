@@ -14,6 +14,8 @@ u must have mod menu and cloth config to configure it
 
 - [x] auto event leave
 
+- [ ] auto skipnight
+
 - [x] stfu ryan
 
 - [x] stfu votes
