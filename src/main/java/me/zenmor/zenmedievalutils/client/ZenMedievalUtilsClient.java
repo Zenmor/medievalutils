@@ -1,7 +1,6 @@
 package me.zenmor.zenmedievalutils.client;
 
 import me.zenmor.zenmedievalutils.TitleStorage;
-import me.zenmor.zenmedievalutils.ZenMedievalUtils;
 import me.zenmor.zenmedievalutils.config.MedievalUtilsConfig;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -11,7 +10,6 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.option.KeyBinding;
-import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.screen.GenericContainerScreenHandler;
@@ -88,9 +86,9 @@ public class ZenMedievalUtilsClient implements ClientModInitializer {
                 starttime = System.currentTimeMillis();
                 MinecraftClient.getInstance().player.sendMessage(Text.literal("dungeon trimer started").styled(style -> style.withColor(TextColor.fromRgb(0xA4BEF3))), true);
 
-                if (MedievalUtilsConfig.getInstance().isdungeondreamenabled()) {
-                    MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(ZenMedievalUtils.DREAMSPEEDRUN_EVENT, 1.0f, 1.0f));
-                }
+                //if (MedievalUtilsConfig.getInstance().isdungeondreamenabled()) {
+                //    MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(ZenMedievalUtils.DREAMSPEEDRUN_EVENT, 1.0f, 1.0f));
+                //}
             }
 
             MinecraftClient client = MinecraftClient.getInstance();

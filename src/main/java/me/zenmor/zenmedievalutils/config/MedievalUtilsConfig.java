@@ -14,7 +14,7 @@ public final class MedievalUtilsConfig {
     private static final Gson GSON = new GsonBuilder().setLenient().setPrettyPrinting().create();
     private static MedievalUtilsConfig instance;
 
-    
+
     static final boolean defaultAUtoClose = false;
     static final boolean defaultWelcome = false;
     static final boolean defaultSTFUrewards = false;
@@ -24,7 +24,11 @@ public final class MedievalUtilsConfig {
     static final boolean defaultSTFUvotes = false;
     static final boolean defaultdungeontimer = true;
     static final boolean defaultSTFUryan = false;
-    static final boolean defaultdungeondream = false;
+    static final boolean defaultSTFUworldguard = false;
+    static final boolean defaultskiphub = false;
+    static final boolean defaultSTFUdaily = false;
+    static final boolean defaultSTFUskipnight = false;
+    //static final boolean defaultdungeondream = false;
 
     boolean aUtoClose = defaultAUtoClose;
     boolean welcome = defaultWelcome;
@@ -35,7 +39,11 @@ public final class MedievalUtilsConfig {
     boolean stfuvotes = defaultSTFUvotes;
     boolean dungeontimer = defaultdungeontimer;
     boolean stfuryan = defaultSTFUryan;
-    boolean dungeondream = defaultdungeondream;
+    boolean stfuworldguard = defaultSTFUworldguard;
+    boolean skiphub = defaultskiphub;
+    boolean stfudaily = defaultSTFUdaily;
+    boolean stfuskipnight = defaultSTFUskipnight;
+    //boolean dungeondream = defaultdungeondream;
 
     private MedievalUtilsConfig() {
     }
@@ -100,7 +108,23 @@ public final class MedievalUtilsConfig {
         return stfuryan;
     }
 
-    public boolean isdungeondreamenabled() {
-        return dungeondream;
+    public boolean isstfuworldguardenabled() {
+        return stfuworldguard;
     }
+
+    public boolean isskiphubenabled() {
+        return skiphub;
+    }
+
+    public boolean isstfudailyenabled() {
+        return stfudaily;
+    }
+
+    public boolean isstfuskipnightenabled() {
+        return stfuskipnight;
+    }
+
+    //public boolean isdungeondreamenabled() {
+    //    return dungeondream;
+    //}
 }

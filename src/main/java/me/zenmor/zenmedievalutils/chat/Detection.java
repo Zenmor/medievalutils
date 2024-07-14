@@ -43,12 +43,27 @@ public class Detection implements ClientReceiveMessageEvents.AllowGame {
             MinecraftClient.getInstance().player.networkHandler.sendChatCommand("event leave");
             LogUtils.getLogger().info("left event auto");
             return true;
-        } else if (MedievalUtilsConfig.getInstance().isstfuvotesenabled() && Pattern.compile(Pattern.quote("MedievalMC » ") + "[^ ]*" + Pattern.quote(" has voted!"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find()) {
+        } else if (MedievalUtilsConfig.getInstance().isstfuvotesenabled() && Pattern.compile(Pattern.quote("MedievalMC » ") + "[^ ]*" + Pattern.quote(" has voted!"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find() || MedievalUtilsConfig.getInstance().isstfuvotesenabled() && Pattern.compile(Pattern.quote("MedievalMC » Party will start soon"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find()) {
             LogUtils.getLogger().info("blocked vote message");
+            return false;
+        } else if (MedievalUtilsConfig.getInstance().isstfuskipnightenabled() && Pattern.compile(Pattern.quote("[Vote] ") + "[^ ]*" + Pattern.quote(" has started a vote to skip the night!"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find() || MedievalUtilsConfig.getInstance().isstfuskipnightenabled() && Pattern.compile(Pattern.quote("Please vote: [Yes] [No]"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find() || MedievalUtilsConfig.getInstance().isstfuskipnightenabled() && Pattern.compile(Pattern.quote("[Vote] 10 seconds let to vote!"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find() || MedievalUtilsConfig.getInstance().isstfuskipnightenabled() && Pattern.compile(Pattern.quote("[Vote] Vote passed! Skipping the night."), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find()) {
+            LogUtils.getLogger().info("blocked skipnight message");
+            return false;
+        } else if (MedievalUtilsConfig.getInstance().isstfudailyenabled() && Pattern.compile(Pattern.quote("MedievalMC » ") + "[^ ]*" + Pattern.quote(" has claimed their daily tribute with /daily!"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find()) {
+            LogUtils.getLogger().info("blocked daily message");
+            return false;
+        } else if (MedievalUtilsConfig.getInstance().isstfuworldguardenabled() && Pattern.compile(Pattern.quote("Hey! Sorry, but you can't"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find()) {
+            LogUtils.getLogger().info("blocked worldguard message");
             return false;
         } else if (MedievalUtilsConfig.getInstance().isstfuryanenabled() && Pattern.compile(Pattern.quote("Lordrj2 » "), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find()) {
             MinecraftClient.getInstance().player.sendMessage(Text.literal("message from ryan removed").styled(style -> style.withColor(TextColor.fromRgb(0xA4BEF3))), false);
             return false;
+        } else if (MedievalUtilsConfig.getInstance().isskiphubenabled() && Pattern.compile(Pattern.quote("Join a realm by clicking on your"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find()) {
+            LogUtils.getLogger().info("skipped hub");
+
+            assert MinecraftClient.getInstance().player != null;
+            MinecraftClient.getInstance().player.networkHandler.sendCommand("server survival");
+            return true;
         } else {
             return true;
         }
