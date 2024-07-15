@@ -18,6 +18,13 @@ public class ModMenuIntegration implements ModMenuApi {
         return ModMenuIntegration::createConfigScreen;
     }
 
+    public enum hudposition {
+        TOP_LEFT,
+        TOP_CENTER,
+        TOP_RIGHT,
+        ABOVE_ACTIONBAR;
+    }
+
     private static Screen createConfigScreen(Screen parent) {
         ConfigBuilder builder = ConfigBuilder.create()
                 .setParentScreen(parent)
@@ -41,6 +48,20 @@ public class ModMenuIntegration implements ModMenuApi {
                 .setDefaultValue(MedievalUtilsConfig.defaultWelcome)
                 .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.autowelcome"))
                 .setSaveConsumer(welcome -> MedievalUtilsConfig.getInstance().welcome = welcome)
+                .build());
+        qolcategory.addEntry(entryBuilder.startBooleanToggle(
+                        Text.translatable("text.medievalutils.config.option.autoskipnight"),
+                        MedievalUtilsConfig.getInstance().autoskipnight)
+                .setDefaultValue(MedievalUtilsConfig.defaultautoskipnight)
+                .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.autoskipnight"))
+                .setSaveConsumer(autoskipnight -> MedievalUtilsConfig.getInstance().autoskipnight = autoskipnight)
+                .build());
+        qolcategory.addEntry(entryBuilder.startBooleanToggle(
+                        Text.translatable("text.medievalutils.config.option.autoclaimdaily"),
+                        MedievalUtilsConfig.getInstance().autoclaimdaily)
+                .setDefaultValue(MedievalUtilsConfig.defaultautoclaimdaily)
+                .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.autoclaimdaily"))
+                .setSaveConsumer(autoclaimdaily -> MedievalUtilsConfig.getInstance().autoclaimdaily = autoclaimdaily)
                 .build());
         qolcategory.addEntry(entryBuilder.startBooleanToggle(
                         Text.translatable("text.medievalutils.config.option.skiphub"),
@@ -108,6 +129,14 @@ public class ModMenuIntegration implements ModMenuApi {
                 .setDefaultValue(MedievalUtilsConfig.defaultdungeontimer)
                 .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.dungeontimer"))
                 .setSaveConsumer(dungeontimer -> MedievalUtilsConfig.getInstance().dungeontimer = dungeontimer)
+                .build());
+        dungeoncategory.addEntry(entryBuilder.startEnumSelector(Text.translatable("text.medievalutils.config.option.hudposition"), hudposition.class, hudposition.valueOf(MedievalUtilsConfig.getInstance().gethudposition()))
+                .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.hudposition"))
+                .setSaveConsumer(newValue -> MedievalUtilsConfig.getInstance().hudposition = newValue.name())
+                .build());
+        dungeoncategory.addEntry(entryBuilder.startColorField(Text.translatable("text.medievalutils.config.option.hudcolor"), MedievalUtilsConfig.getInstance().gethudcolor())
+                .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.hudcolor"))
+                .setSaveConsumer(newValue -> MedievalUtilsConfig.getInstance().hudcolor = newValue)
                 .build());
         //dungeoncategory.addEntry(entryBuilder.startBooleanToggle(
         //                Text.translatable("text.medievalutils.config.option.dungeontimerDREAM"),

@@ -18,6 +18,7 @@ public class Detection implements ClientReceiveMessageEvents.AllowGame {
 
             assert MinecraftClient.getInstance().player != null;
             MinecraftClient.getInstance().player.networkHandler.sendChatMessage("welcome");
+
             return true;
 
         } else if (MedievalUtilsConfig.getInstance().isstfurewardsenabled() && (Pattern.compile(Pattern.quote("Dungeons » These items will be added to your rewards inventory! You'll get them when you finish the dungeon."), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find())
@@ -31,7 +32,8 @@ public class Detection implements ClientReceiveMessageEvents.AllowGame {
                         || MedievalUtilsConfig.getInstance().isstfutipsenabled() && (Pattern.compile(Pattern.quote("MedievalMC: Want to obtain some amazing items? /warp darkzone but be aware of the challenge that awaits!"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find())
                         || MedievalUtilsConfig.getInstance().isstfutipsenabled() && (Pattern.compile(Pattern.quote("MedievalMC: Make sure you remember to claim your /daily each time you login!"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find())
                         || MedievalUtilsConfig.getInstance().isstfutipsenabled() && (Pattern.compile(Pattern.quote("MedievalMC: Looking for massive upgrades and unique items? Then look no further than /blackmarket!"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find())
-                        || MedievalUtilsConfig.getInstance().isstfutipsenabled() && (Pattern.compile(Pattern.quote("MedievalMC: Think you are ready to battle the elements? Well if so check out /bosses and test yourself!"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find())) {
+                        || MedievalUtilsConfig.getInstance().isstfutipsenabled() && (Pattern.compile(Pattern.quote("MedievalMC: Think you are ready to battle the elements? Well if so check out /bosses and test yourself!"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find())
+                        || MedievalUtilsConfig.getInstance().isstfutipsenabled() && (Pattern.compile(Pattern.quote("Votes » Don't forget to vote for our server!"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find())) {
             //i swear they made these tips with chatgpt lmao
             LogUtils.getLogger().info("blocked tip messages");
             return false;
@@ -63,6 +65,21 @@ public class Detection implements ClientReceiveMessageEvents.AllowGame {
 
             assert MinecraftClient.getInstance().player != null;
             MinecraftClient.getInstance().player.networkHandler.sendCommand("server survival");
+            return true;
+        } else if (MedievalUtilsConfig.getInstance().isautoskipnightenabled() && Pattern.compile(Pattern.quote("[Vote] ") + "[^ ]*" + Pattern.quote(" has started a vote to skip the night!"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find()) {
+            if (MedievalUtilsConfig.getInstance().isstfuskipnightenabled()) {
+                LogUtils.getLogger().info("blocked skipnight message & voted");
+                MinecraftClient.getInstance().player.networkHandler.sendCommand("skipnight yes");
+                return false;
+            } else {
+                LogUtils.getLogger().info("voted on skipnight message");
+                MinecraftClient.getInstance().player.networkHandler.sendCommand("skipnight yes");
+                return true;
+            }
+        } else if (MedievalUtilsConfig.getInstance().isautoclaimdailyenabled() && Pattern.compile(Pattern.quote("Daily » You have a Daily Reward waiting to be claimed!"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find()) {
+            LogUtils.getLogger().info("auto claime daily");
+            MinecraftClient.getInstance().player.networkHandler.sendCommand("daily claim");
+
             return true;
         } else {
             return true;

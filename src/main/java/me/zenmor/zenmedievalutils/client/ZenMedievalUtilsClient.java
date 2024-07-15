@@ -13,6 +13,8 @@ import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.screen.GenericContainerScreenHandler;
+import net.minecraft.text.ClickEvent;
+import net.minecraft.text.HoverEvent;
 import net.minecraft.text.Text;
 import net.minecraft.text.TextColor;
 import org.lwjgl.glfw.GLFW;
@@ -98,12 +100,19 @@ public class ZenMedievalUtilsClient implements ClientModInitializer {
             long seconds = (currenttime / 1000) % 60;
             long minutes = (currenttime / (1000 * 60)) % 60;
             String timeString = String.format("%02d:%02d:%02d", minutes, seconds, milliseconds);
-            int x = (client.getWindow().getScaledWidth() - textRenderer.getWidth(timeString)) / 2;
-            int y = 10;
+
+            int x = 0, y = 10;
+            x = switch (MedievalUtilsConfig.getInstance().gethudposition()) {
+                case "TOP_LEFT" -> 10;
+                case "TOP_RIGHT" -> client.getWindow().getScaledWidth() - textRenderer.getWidth(timeString) - 10;
+                case "ABOVE_ACTIONBAR" -> (client.getWindow().getScaledWidth() - textRenderer.getWidth(timeString)) / 2;
+                default -> (client.getWindow().getScaledWidth() - textRenderer.getWidth(timeString)) / 2;
+            };
+
             MatrixStack matrices = new MatrixStack();
             matrices.push();
             matrices.translate(x, y, 0);
-            textRenderer.draw(timeString, 0, 0, 0xfcf300, false, matrices.peek().getPositionMatrix(), context.getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, 0, 0);
+            textRenderer.draw(timeString, 0, 0, MedievalUtilsConfig.getInstance().gethudcolor(), false, matrices.peek().getPositionMatrix(), context.getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, 0, 0);
             matrices.pop();
         } else if (previousworld != null && targetWorlds.contains(previousworld) && MedievalUtilsConfig.getInstance().isdungeontimersenabled()) {
             long endTime = System.currentTimeMillis();
@@ -115,7 +124,38 @@ public class ZenMedievalUtilsClient implements ClientModInitializer {
 
             // they should add advetnure/minimessage for fabri9c frr
             MinecraftClient.getInstance().player.sendMessage(Text.literal("dungeon finished in: " + timeString).styled(style -> style.withColor(TextColor.fromRgb(0xA4BEF3))), true);
-            MinecraftClient.getInstance().player.sendMessage(Text.literal("dungeon finished in: " + timeString).styled(style -> style.withColor(TextColor.fromRgb(0xA4BEF3))), false);
+
+            Text copybutton = Text.literal("[copy]")
+                    .styled(style -> style
+                            .withColor(TextColor.fromRgb(0xA4BEF3))
+                            .withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, "make this work later"))
+                            .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.literal("click to copy text")))
+                    );
+
+            Text startbutton = Text.literal("[start another]")
+                    .styled(style -> style
+                            .withColor(TextColor.fromRgb(0xA4BEF3))
+                            .withClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/dungeon play sunken"))
+                            .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.literal("click to start another")))
+                    );
+
+            Text stats = Text.literal("[statitics]")
+                    .styled(style -> style
+                            .withColor(TextColor.fromRgb(0xA4BEF3))
+                            .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.literal("kills: code later")))
+                    );
+
+            Text message = Text.literal("\ndungeon finished in: " + timeString + "\n")
+                    .styled(style -> style.withColor(TextColor.fromRgb(0xA4BEF3)))
+                    .append(" → ")
+                    .append(copybutton)
+                    .append(" ")
+                    .append(startbutton)
+                    .append(" ")
+                    .append(stats)
+                    .append("\n ");
+
+            MinecraftClient.getInstance().player.sendMessage(message, false);
         }
         previousworld = currentWorld;
     }

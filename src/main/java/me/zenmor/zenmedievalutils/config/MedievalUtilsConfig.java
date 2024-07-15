@@ -29,6 +29,10 @@ public final class MedievalUtilsConfig {
     static final boolean defaultSTFUdaily = false;
     static final boolean defaultSTFUskipnight = false;
     //static final boolean defaultdungeondream = false;
+    static final String defaulthudpos = "TOP_CENTER";
+    static final int defaulthudcolor = 0xfcf300;
+    static final boolean defaultautoskipnight = false;
+    static final boolean defaultautoclaimdaily = false;
 
     boolean aUtoClose = defaultAUtoClose;
     boolean welcome = defaultWelcome;
@@ -44,6 +48,10 @@ public final class MedievalUtilsConfig {
     boolean stfudaily = defaultSTFUdaily;
     boolean stfuskipnight = defaultSTFUskipnight;
     //boolean dungeondream = defaultdungeondream;
+    String hudposition = defaulthudpos;
+    int hudcolor = defaulthudcolor;
+    boolean autoskipnight = defaultautoskipnight;
+    boolean autoclaimdaily = defaultautoclaimdaily;
 
     private MedievalUtilsConfig() {
     }
@@ -122,6 +130,22 @@ public final class MedievalUtilsConfig {
 
     public boolean isstfuskipnightenabled() {
         return stfuskipnight;
+    }
+
+    public String gethudposition() {
+        return hudposition;
+    }
+
+    public int gethudcolor() {
+        return hudcolor;
+    }
+
+    public boolean isautoskipnightenabled() {
+        return autoskipnight;
+    }
+
+    public boolean isautoclaimdailyenabled() {
+        return autoclaimdaily;
     }
 
     //public boolean isdungeondreamenabled() {
