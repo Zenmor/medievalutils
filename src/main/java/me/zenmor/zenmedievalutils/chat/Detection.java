@@ -7,18 +7,27 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
 import net.minecraft.text.TextColor;
 
+import java.util.Queue;
+import java.util.concurrent.*;
 import java.util.regex.Pattern;
 
 public class Detection implements ClientReceiveMessageEvents.AllowGame {
 
+    private final Queue<Runnable> tasks = new ConcurrentLinkedQueue<>();
+    private final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
+    private ScheduledFuture<?> welcomeTask;
+
     @Override
     public boolean allowReceiveGameMessage(Text message, boolean overlay) {
         if (MedievalUtilsConfig.getInstance().iswelcomeenabled() && Pattern.compile(Pattern.quote("Welcome ") + "[^ ]*" + Pattern.quote(" to the MedievalMC Realm!"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find()) {
-            LogUtils.getLogger().info("blocked welcome message");
-
-            assert MinecraftClient.getInstance().player != null;
-            MinecraftClient.getInstance().player.networkHandler.sendChatMessage("welcome");
-
+            LogUtils.getLogger().info("sent welcome message");
+            if (welcomeTask != null) {
+                welcomeTask.cancel(true);
+            }
+            welcomeTask = scheduler.schedule(() -> {
+                assert MinecraftClient.getInstance().player != null;
+                MinecraftClient.getInstance().player.networkHandler.sendChatMessage("welcome");
+            }, MedievalUtilsConfig.getInstance().getwelcomedelay() * 1000, TimeUnit.MILLISECONDS);
             return true;
 
         } else if (MedievalUtilsConfig.getInstance().isstfurewardsenabled() && (Pattern.compile(Pattern.quote("Dungeons » These items will be added to your rewards inventory! You'll get them when you finish the dungeon."), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find())

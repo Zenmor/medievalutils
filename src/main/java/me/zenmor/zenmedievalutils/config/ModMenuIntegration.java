@@ -42,6 +42,10 @@ public class ModMenuIntegration implements ModMenuApi {
                 .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.autoleave"))
                 .setSaveConsumer(autoleave -> MedievalUtilsConfig.getInstance().autoleave = autoleave)
                 .build());
+        qolcategory.addEntry(entryBuilder.startIntSlider(Text.translatable("text.medievalutils.config.option.autowelcomedelay"), MedievalUtilsConfig.getInstance().getwelcomedelay(), 0, 3)
+                .setTooltip(Text.translatable("text.medievalutils.config.tooltip.option.autowelcomedelay"))
+                .setSaveConsumer(newValue -> MedievalUtilsConfig.getInstance().welceomdelay = newValue)
+                .build());
         qolcategory.addEntry(entryBuilder.startBooleanToggle(
                         Text.translatable("text.medievalutils.config.option.autowelcome"),
                         MedievalUtilsConfig.getInstance().welcome)

@@ -33,6 +33,7 @@ public final class MedievalUtilsConfig {
     static final int defaulthudcolor = 0xfcf300;
     static final boolean defaultautoskipnight = false;
     static final boolean defaultautoclaimdaily = false;
+    static final int defaultwelcomedelay = 1;
 
     boolean aUtoClose = defaultAUtoClose;
     boolean welcome = defaultWelcome;
@@ -52,6 +53,7 @@ public final class MedievalUtilsConfig {
     int hudcolor = defaulthudcolor;
     boolean autoskipnight = defaultautoskipnight;
     boolean autoclaimdaily = defaultautoclaimdaily;
+    int welceomdelay = defaultwelcomedelay;
 
     private MedievalUtilsConfig() {
     }
@@ -146,6 +148,10 @@ public final class MedievalUtilsConfig {
 
     public boolean isautoclaimdailyenabled() {
         return autoclaimdaily;
+    }
+
+    public int getwelcomedelay() {
+        return welceomdelay;
     }
 
     //public boolean isdungeondreamenabled() {

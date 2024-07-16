@@ -10,7 +10,7 @@
   "text.medievalutils.config.option.autoskipnight": "auto skipnight",
   "text.medievalutils.config.tooltip.option.autoskipnight": "automatically vote yes for skipnight",
   "text.medievalutils.config.option.autoclaimdaily": "auto claimdaiy",
-  "text.medievalutils.config.tooltip.option.autoclaimdaily": "open menu fsdrxovgklckvjkmnbfgjkmhfggklnofdfghkfghrkohgijmrkhgfjioszfrhijgkojiogh[frsjfghsziszhjfoigjghiofrzphjuiofgszhugaoiaujdfgzioadjzfghojfszdopgjsfgojsfghpoiasjztgtp;aoijdzrgrpoisjdfgttposifjgbhpoisjftgtghpoisjdfrgpoiajdfgpoijsdfgpoijsaedrgpoijsdfgpoijsdfgpoijsdfgpoijsdfghpoijsdfgoiuahjdrgf",
+  "text.medievalutils.config.tooltip.option.autoclaimdaily": "ogh[[[[[[[[[[[[[[[;",
   "text.medievalutils.config.option.dungeontimer": "dungeon timer",
   "text.medievalutils.config.tooltip.option.dungeontimer": "a timer that times ur dungeon runs",
   "text.medievalutils.config.option.skiphub": "skip hub",
@@ -39,6 +39,8 @@
   "text.medievalutils.config.tooltip.option.hudcolor": "change color of timer",
   "text.medievalutils.config.option.autowelcome": "auto welcome",
   "text.medievalutils.config.tooltip.option.autowelcome": "§c§lUSE AT OWN RISK§r §7-§r §ridk if this is allowed since its free rewards",
+  "text.medievalutils.config.option.autowelcomedelay": "auto welcome delay",
+  "text.medievalutils.config.tooltip.option.autowelcomedelay": "delay for auto welcome",
   "text.medievalutils.config.option.autoclose": "lootchest autoclose",
   "text.medievalutils.config.tooltip.option.autoclose": "autommaiclly close lootchests in dungeons"
 }
