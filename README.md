@@ -1,4 +1,5 @@
 ## for minecraft 1.20.2
+if you need a dif mc ver dm me on discord
 
 adds keybind to open blocks shop in spawn
 adds useful qol options
