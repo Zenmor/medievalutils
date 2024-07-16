@@ -15,7 +15,7 @@ u must have mod menu and cloth config to configure it
 
 - [x] auto event leave
 
-- [ ] auto skipnight
+- [x] auto skipnight
 
 - [x] stfu ryan
 
@@ -24,8 +24,7 @@ u must have mod menu and cloth config to configure it
 - [ ] stfu fish
 
 - [x] recreate dungeon timer but better from zentimer
- - [ ] make dungeon timer have different spots u can put it in
- - [ ] color picker for dungeon timer
- - [ ] make a dungeon speedrun website (idk how to make websites, so lowest priority) 
+ - [x] make dungeon timer have different spots u can put it in
+ - [x] color picker for dungeon timer
 
 ### if you have suggestions dm me
