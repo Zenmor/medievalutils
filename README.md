@@ -7,24 +7,16 @@ adds useful qol options
 u must have mod menu and cloth config to configure it
 
 ## ideas:
-- [x] auto ready : Dungeons >> Dungeon 'sunken' is now available Are you ready?
+- [ ] bos timmers
 
-- [x] stfu announcents -enchantedbluejay
+- [ ] stfu trapped -enchanted
 
-- [ ] ~~bos timmers~~ i dunno how to do
+- [ ] stfu fishing
 
-- [x] auto event leave
+- [ ] make lootchests in dungeons glow (unsure) -enchanted
 
-- [x] auto skipnight
+- [ ] make mob statistics for dungeon end message work?
 
-- [x] stfu ryan
-
-- [x] stfu votes
-
-- [ ] stfu fish
-
-- [x] recreate dungeon timer but better from zentimer
- - [x] make dungeon timer have different spots u can put it in
- - [x] color picker for dungeon timer
+- [ ] auto chatgame
 
 ### if you have suggestions dm me
