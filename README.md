@@ -6,7 +6,7 @@ adds useful qol options
 
 u must have mod menu and cloth config to configure it
 
-## ideas:
+## checklist:
 - [ ] bos timmers
 
 - [ ] stfu trapped -enchanted
