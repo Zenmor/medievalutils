@@ -2,7 +2,7 @@ checklist:
 - [x] nothing atm
 
 known bugs: 
-- [ ] auto skip hub not work
+- [x] nothing atm
 
 ## requires owolib
 ## support/help will only be offered in my dms
