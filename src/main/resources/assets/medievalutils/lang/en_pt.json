@@ -1,0 +1,17 @@
+{
+  "completedscreen.dungeongg": [
+    "ya completed yar voyage in ",
+    "",
+    {
+      "index": 0,
+      "color": "#9BB1FF"
+    }
+  ],
+  "text.config.medievalutils-config.title": "medieval utils",
+  "text.config.medievalutils-config.section.dungeons": "be it dungeon config",
+  "text.config.medievalutils-config.option.dungeoncomplete": "customize yer voyage",
+  "text.config.medievalutils-config.enum.dungeoncompletetypes.gui": "gui",
+  "text.config.medievalutils-config.enum.dungeoncompletetypes.toast": "toast",
+  "text.config.medievalutils-config.enum.dungeoncompletetypes.actionbar": "actionbar",
+  "text.config.medievalutils-config.enum.dungeoncompletetypes.chat": "chat"
+}

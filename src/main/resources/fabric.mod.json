@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "medievalutils",
+  "version": "${version}",
+  "name": "MedievalUtils",
+  "description": "utils for medievalmc",
+  "authors": [
+    "Zenmor"
+  ],
+  "contact": {},
+  "license": "GPL-3.0",
+  "icon": "assets/medievalutils/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "me.zenmor.medievalutils.client.MedievalUtilsClient"
+    ],
+    "main": [
+      "me.zenmor.medievalutils.MedievalUtils"
+    ]
+  },
+  "mixins": [
+    "medievalutils.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.github_releases": "https://github.com/Zenmor/medievalutils"
+      }
+    }
+  }
+}
