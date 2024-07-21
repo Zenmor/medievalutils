@@ -1,1 +1,5 @@
-# a new version is in the works
+checklist:
+- [x] nothing atm
+
+known bugs: 
+- [ ] auto skip hub not work
