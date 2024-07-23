@@ -1,5 +1,5 @@
 checklist:
-- [x] nothing atm
+- [ ] riddle scroll solver
 
 known bugs: 
 - [x] nothing atm
