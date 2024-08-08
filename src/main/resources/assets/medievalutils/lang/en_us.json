@@ -40,8 +40,13 @@
   "text.config.medievalutils-config.option.qol.autoclaimdaily": "auto claim daly",
   "text.config.medievalutils-config.enum.dungeontimerpos.top_left": "top l,eft",
   "text.config.medievalutils-config.enum.dungeontimerpos.top_right": "top right",
+  "text.config.medievalutils-config.enum.fishalerttypes.simple": "peacful",
+  "text.config.medievalutils-config.enum.fishalerttypes.medium": "miedum",
+  "text.config.medievalutils-config.enum.fishalerttypes.annoying": "annOYING",
   "text.config.medievalutils-config.enum.dungeontimerpos.above_actionbar": "above acitonbar",
+  "text.config.medievalutils-config.option.qol.fishalert": "fish alert",
+  "text.config.medievalutils-config.option.qol.fishalerttype": "annoyingness of fishalert",
   "text.config.medievalutils-config.category.dungeomtimer": "dungeom tiemr",
   "text.config.medievalutils-config.option.dungeomtimer.dungeontimer": "timer enabled",
-  "text.config.medievalutils-config.option.dungeomtimer.dungeontimercolor": "timer color ( HEX COLORS ONLY )"
+  "text.config.medievalutils-config.option.dungeomtimer.dungeontimercolor": "timer color (hex color)("
 }

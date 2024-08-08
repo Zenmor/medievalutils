@@ -17,12 +17,21 @@ public class ClientChat implements ClientReceiveMessageEvents.AllowGame {
     private final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
     private ScheduledFuture<?> welcomeTask;
 
+    public ClientChat() {
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            if (welcomeTask != null) {
+                welcomeTask.cancel(true);
+            }
+            scheduler.shutdown();
+        }));
+    }
+
     @Override
     public boolean allowReceiveGameMessage(Text message, boolean overlay) {
         String serverip = getserverip();
         if (serverip == null) return true;
 
-        if (serverip.equalsIgnoreCase("localhost:25569") || serverip.equalsIgnoreCase("play.medievalmc.co") || serverip.equalsIgnoreCase("play.huabacraft.com")) {
+        if (serverip.equalsIgnoreCase("localhost:25569") || serverip.equalsIgnoreCase("play.medievalmc.co") || serverip.equalsIgnoreCase("play.huabacraft.com") || serverip.equalsIgnoreCase("medievalmc.co")) {
             if (CONFIG.stfu.stfudaily() && Pattern.compile(Pattern.quote("MedievalMC » ") + "[^ ]*" + Pattern.quote(" has claimed their daily tribute with /daily!"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find()) {
                 if (CONFIG.debugging()) {
                     LogUtils.getLogger().info("blocked daily message");
@@ -109,9 +118,10 @@ public class ClientChat implements ClientReceiveMessageEvents.AllowGame {
                 }
 
                 welcomeTask = scheduler.schedule(() -> {
-                    assert MinecraftClient.getInstance().player != null;
-                    MinecraftClient.getInstance().player.sendMessage(Text.literal("you can use your pet with 20m cooldown again").styled(style -> style.withColor(TextColor.fromRgb(0xA4BEF3))), false);
-                }, 1 * 1000, TimeUnit.MILLISECONDS);
+                    if (MinecraftClient.getInstance().player != null) {
+                        MinecraftClient.getInstance().player.sendMessage(Text.literal("you can use your pet with 20m cooldown again").styled(style -> style.withColor(TextColor.fromRgb(0xA4BEF3))), false);
+                    }
+                }, 20 * 10000L, TimeUnit.MILLISECONDS);
                 return true;
             } else if (CONFIG.qol.autowelcome() && Pattern.compile(Pattern.quote("Welcome ") + "[^ ]*" + Pattern.quote(" to the MedievalMC Realm!"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find()) {
                 if (CONFIG.debugging()) {
@@ -123,9 +133,10 @@ public class ClientChat implements ClientReceiveMessageEvents.AllowGame {
                 }
 
                 welcomeTask = scheduler.schedule(() -> {
-                    assert MinecraftClient.getInstance().player != null;
-                    MinecraftClient.getInstance().player.networkHandler.sendChatMessage("welcome");
-                }, CONFIG.qol.autowelcomedelay() * 1000, TimeUnit.MILLISECONDS);
+                    if (MinecraftClient.getInstance().player != null) {
+                        MinecraftClient.getInstance().player.networkHandler.sendChatMessage("welcome");
+                    }
+                }, CONFIG.qol.autowelcomedelay() * 1000L, TimeUnit.MILLISECONDS);
                 return true;
             } else if (CONFIG.qol.autoclaimdaily() && Pattern.compile(Pattern.quote("Daily » You have a Daily Reward waiting to be claimed!"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find()) {
                 if (CONFIG.debugging()) {

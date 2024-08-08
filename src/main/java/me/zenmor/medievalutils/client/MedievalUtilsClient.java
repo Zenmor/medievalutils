@@ -48,6 +48,7 @@ public class MedievalUtilsClient implements ClientModInitializer {
 
         ClientTickEvents.END_CLIENT_TICK.register(this::onClientTickEnd);
         HudRenderCallback.EVENT.register(this::onRender);
+        ClientTickEvents.START_CLIENT_TICK.register(new FishyAlert());
     }
 
     public void onClientTickEnd(MinecraftClient client) {

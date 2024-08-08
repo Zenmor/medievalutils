@@ -9,6 +9,7 @@ import net.minecraft.util.Identifier;
 
 @Modmenu(modId = "medievalutils")
 @Config(name = "medievalutils-config", wrapperName = "MyConfig")
+// idk how to change wrapper name without it crashing i just followed example
 public class MedievalConfig {
     public static final Identifier COMPONENT_ID = Identifier.of("medievalutils", "my_ui_screen");
 
@@ -21,6 +22,10 @@ public class MedievalConfig {
     @Nest
     public qoloptions qol = new qoloptions();
 
+    public enum fishalerttypes {
+        simple, medium, annoying;
+    }
+
     public static class qoloptions {
         public boolean petusereminder = false;
         public int autowelcomedelay = 5;
@@ -28,6 +33,8 @@ public class MedievalConfig {
         public boolean autoskipnight = false;
         public boolean skiphub = false;
         public boolean autoclaimdaily = false;
+        public boolean fishalert = false;
+        public MedievalConfig.fishalerttypes fishalerttype = fishalerttypes.simple;
     }
 
     @Nest
