@@ -1,1 +1,8 @@
-# a new version is in the works
+checklist:
+- [ ] riddle scroll solver
+
+known bugs: 
+- [x] nothing atm
+
+## requires owolib
+## support/help will only be offered in my dms
