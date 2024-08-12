@@ -26,6 +26,10 @@ public class MedievalConfig {
         simple, medium, annoying;
     }
 
+    public enum kothremindertypes {
+        toast, title, chat;
+    }
+
     public static class qoloptions {
         public boolean petusereminder = false;
         public int autowelcomedelay = 5;
@@ -35,6 +39,8 @@ public class MedievalConfig {
         public boolean autoclaimdaily = false;
         public boolean fishalert = false;
         public MedievalConfig.fishalerttypes fishalerttype = fishalerttypes.simple;
+        public boolean kothreminder = false;
+        public MedievalConfig.kothremindertypes kothremindertypes = MedievalConfig.kothremindertypes.title;
     }
 
     @Nest

@@ -59,8 +59,7 @@ public class ClientChat implements ClientReceiveMessageEvents.AllowGame {
                 }
                 return false;
             } else if (CONFIG.stfu.stfuskipnight() && Pattern.compile(Pattern.quote("[Vote] ") + "[^ ]*" + Pattern.quote(" has started a vote to skip the night!"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find()) {
-                if (CONFIG.qol.autoskipnight() && CONFIG.stfu.stfuskipnight()) {
-                    assert MinecraftClient.getInstance().player != null;
+                if (CONFIG.qol.autoskipnight() && CONFIG.stfu.stfuskipnight() && MinecraftClient.getInstance().player != null) {
                     MinecraftClient.getInstance().player.networkHandler.sendCommand("skipnight yes");
                     return false;
                 }
@@ -148,14 +147,17 @@ public class ClientChat implements ClientReceiveMessageEvents.AllowGame {
                 if (CONFIG.debugging()) {
                     LogUtils.getLogger().info("detected ryan message, blocking it");
                 }
-                MinecraftClient.getInstance().player.sendMessage(Text.literal("message from ryan removed").styled(style -> style.withColor(TextColor.fromRgb(0xA4BEF3))), false);
+                if (MinecraftClient.getInstance().player != null) {
+                    MinecraftClient.getInstance().player.sendMessage(Text.literal("message from ryan removed").styled(style -> style.withColor(TextColor.fromRgb(0xA4BEF3))), false);
+                }
                 return false;
             } else if (CONFIG.qol.skiphub() && Pattern.compile(Pattern.quote("Join a realm by clicking on your"), Pattern.CASE_INSENSITIVE).matcher(message.getString()).find()) {
                 if (CONFIG.debugging()) {
                     LogUtils.getLogger().info("detected hub message, skiipping hub");
                 }
-                assert MinecraftClient.getInstance().player != null;
-                MinecraftClient.getInstance().player.networkHandler.sendCommand("server survival");
+                if (MinecraftClient.getInstance().player != null) {
+                    MinecraftClient.getInstance().player.networkHandler.sendCommand("server survival");
+                }
 
                 return true;
             }

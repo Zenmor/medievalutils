@@ -49,11 +49,29 @@ public class MedievalUtilsClient implements ClientModInitializer {
         ClientTickEvents.END_CLIENT_TICK.register(this::onClientTickEnd);
         HudRenderCallback.EVENT.register(this::onRender);
         ClientTickEvents.START_CLIENT_TICK.register(new FishyAlert());
+        new Reminders().onInitializeClient();
+
+        // gonna keep disabled
+        //ItemTooltipCallback.EVENT.register((ItemStack stack, TooltipContext context, List<Text> lines) -> {
+        //    if (stack.isOf(Items.PAPER))
+        //        lines.add(Text.empty());
+        //    lines.add(Text.literal("The Warmer I Am - craft bread"));
+        //    lines.add(Text.literal("North, East - craft compass"));
+        //    lines.add(Text.literal("You Break Me, But - break glass"));
+        //    lines.add(Text.literal("I Hold Things But I do not have - craft chest"));
+        //    lines.add(Text.literal("I Hold Things But when you break - craft cauldron"));
+        //    lines.add(Text.literal("I have towns - craft map"));
+        //    lines.add(Text.literal("i have feathers - craft arrow"));
+        //    lines.add(Text.literal("You can understand what - craft sign"));
+        //    lines.add(Text.literal("Place teh portable item - place ender chest"));
+        //    lines.add(Text.literal("This will be My Lighthouse - craft beacno"));
+        //    lines.add(Text.literal("Place something that is hard - place obisdiajn"));
+        //});
     }
 
     public void onClientTickEnd(MinecraftClient client) {
         if (keyBinding.wasPressed()) {
-            client.player.networkHandler.sendChatMessage("test");
+            client.player.networkHandler.sendChatCommand("owo-config medievalutils");
         }
 
         if (client.player != null && client.player.currentScreenHandler != null && CONFIG.dungeons.dungeonautoclose()) {
