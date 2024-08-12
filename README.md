@@ -1,7 +1,4 @@
 checklist:
-- [ ] riddle scroll solver
-
-- [ ] koth reminder
 
 known bugs: 
 - [x] nothing atm
