@@ -50,9 +50,10 @@
   "text.config.medievalutils-config.enum.kothremindertypes.toast": "toast",
   "text.config.medievalutils-config.enum.dungeontimerpos.above_actionbar": "above acitonbar",
   "text.config.medievalutils-config.option.qol.fishalert": "fish alert",
-  "text.config.medievalutils-config.option.qol.fishalerttype": "annoyingness of fishalert",
+  "text.config.medievalutils-config.option.qol.fishalelrttype": "annoyingness of fishalert",
   "text.config.medievalutils-config.category.dungeomtimer": "dungeom tiemr",
   "text.config.medievalutils-config.option.dungeomtimer.dungeontimer": "timer enabled",
   "text.config.medievalutils-config.option.dungeomtimer.dungeontimercolor": "timer color (hex color)(",
-  "key.medievalutils.test": "open config"
+  "key.medievalutils.test": "open config",
+  "category.medievalutils.test": "MedievalUtils"
 }

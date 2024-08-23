@@ -49,7 +49,6 @@ public class MedievalUtilsClient implements ClientModInitializer {
         ClientTickEvents.END_CLIENT_TICK.register(this::onClientTickEnd);
         HudRenderCallback.EVENT.register(this::onRender);
         ClientTickEvents.START_CLIENT_TICK.register(new FishyAlert());
-        new Reminders().onInitializeClient();
 
         // gonna keep disabled
         //ItemTooltipCallback.EVENT.register((ItemStack stack, TooltipContext context, List<Text> lines) -> {
