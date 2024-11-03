@@ -108,7 +108,6 @@ public class MedievalUtilsClient implements ClientModInitializer {
         List<String> devworlds = Arrays.asList("minecraft:the_end");
         LogUtils.getLogger().info(currentWorld + " | " + CONFIG.dungeomtimer.dungeontimer() + " | " + devworlds.contains(currentWorld));
         if (dungeonworlds.contains(currentWorld) && CONFIG.dungeomtimer.dungeontimer() || dungeonworlds.contains(devworlds) && CONFIG.dungeomtimer.dungeontimer() && CONFIG.debugging()) {
-            LogUtils.getLogger().info("YES ACTIVATEING");
             if (previousworld == null || !previousworld.equals(currentWorld) && CONFIG.dungeomtimer.dungeontimer()) {
                 starttime = System.currentTimeMillis();
                 MinecraftClient.getInstance().player.sendMessage(Text.literal("dungeon timer started").styled(style -> style.withColor(TextColor.fromRgb(CONFIG.modcolor().rgb()))), true);
