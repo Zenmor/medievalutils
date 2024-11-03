@@ -1,5 +1,6 @@
 package me.zenmor.medievalutils.client;
 
+import com.mojang.logging.LogUtils;
 import me.zenmor.medievalutils.config.MedievalConfig;
 import me.zenmor.medievalutils.gui.DungeonGUI;
 import net.fabricmc.api.ClientModInitializer;
@@ -10,6 +11,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.option.KeyBinding;
+import net.minecraft.client.render.RenderTickCounter;
 import net.minecraft.client.toast.SystemToast;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.client.util.math.MatrixStack;
@@ -100,11 +102,13 @@ public class MedievalUtilsClient implements ClientModInitializer {
         }
     }
 
-    private void onRender(DrawContext context, float tickDelta) {
+    private void onRender(DrawContext context, RenderTickCounter tickDelta) {
         String currentWorld = MinecraftClient.getInstance().player.getEntityWorld().getRegistryKey().getValue().toString();
         List<String> dungeonworlds = Arrays.asList("minecraft:sunken_0", "minecraft:sunken_1", "minecraft:sunken_2", "minecraft:sunken_3", "minecraft:sunken_4", "minecraft:sunken_5", "minecraft:sunken_6", "minecraft:sunken_7", "minecraft:sunken_8", "minecraft:sunken_9", "minecraft:sunken_10", "minecraft:sunken_11", "minecraft:sunken_12", "minecraft:sunken_13", "minecraft:sunken_14", "minecraft:sunken_15", "minecraft:sunken_16", "minecraft:sunken_17", "minecraft:sunken_18", "minecraft:sunken_19", "minecraft:sunken_20", "minecraft:sunken_21", "minecraft:sunken_22", "minecraft:sunken_23", "minecraft:sunken_24", "minecraft:sunken_25");
-        List<String> devworlds = Arrays.asList("minecraft:world_the_end");
+        List<String> devworlds = Arrays.asList("minecraft:the_end");
+        LogUtils.getLogger().info(currentWorld + " | " + CONFIG.dungeomtimer.dungeontimer() + " | " + devworlds.contains(currentWorld));
         if (dungeonworlds.contains(currentWorld) && CONFIG.dungeomtimer.dungeontimer() || dungeonworlds.contains(devworlds) && CONFIG.dungeomtimer.dungeontimer() && CONFIG.debugging()) {
+            LogUtils.getLogger().info("YES ACTIVATEING");
             if (previousworld == null || !previousworld.equals(currentWorld) && CONFIG.dungeomtimer.dungeontimer()) {
                 starttime = System.currentTimeMillis();
                 MinecraftClient.getInstance().player.sendMessage(Text.literal("dungeon timer started").styled(style -> style.withColor(TextColor.fromRgb(CONFIG.modcolor().rgb()))), true);
